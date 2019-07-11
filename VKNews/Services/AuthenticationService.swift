@@ -29,7 +29,7 @@ final class AuthenticationService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     func wakeUpSession() {
-        let scope = ["offline"]
+        let scope = ["wall", "friends"]
         // Checking last session with capture list for deligate
         VKSdk.wakeUpSession(scope) { [delegate]
             (state, error) in

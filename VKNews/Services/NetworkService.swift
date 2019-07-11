@@ -16,20 +16,46 @@ final class NetworkService {
         self.authenticationService = authenticationService
     }
     
-    func getNews() {
+    private func url(from path: String) -> URL {
+        let token = authenticationService.token
         var components = URLComponents()
-        
-        guard let token = authenticationService.token else { return }
-        
-        var allParams = ["filters": "post,photo"]
-        allParams["access_token"] = token
-        allParams["v"] = API.version
         components.scheme = API.scheme
         components.host = API.host
         components.path = API.newsFeed
-        components.queryItems = allParams.map {URLQueryItem(name: $0, value: $1)}
+        components.queryItems = [URLQueryItem(name: "filters", value: "post,photo"),
+                                URLQueryItem(name: "access_token", value: token),
+                                URLQueryItem(name: "v", value: API.version),]
         
-        let url = components.url!
+        return components.url!
+    }
+    
+}
+    // MARK: Networking implementation
+
+extension NetworkService: Networking {
+    func request(path: String, completion: @escaping (Data?, Error?) -> Void) {
+        
+//
+//        let allParams = ["filters": "post,photo",
+//                         "access_token": token,
+//                         "v": API.version]
+        let url = self.url(from: path)
+        let session = URLSession.init(configuration: .default)
+        let request = URLRequest(url: url)
+        let task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                completion(data, error)
+            }
+        }
+        task.resume()
         print(url)
     }
+    
+    
+}
+
+    // MARK: Networking protocol
+
+protocol Networking {
+    func request(path: String, completion: @escaping (Data?, Error?) -> Void)
 }
