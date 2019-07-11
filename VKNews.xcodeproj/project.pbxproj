@@ -12,6 +12,8 @@
 		31E8190222D7289400D1D5B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E8190022D7289400D1D5B6 /* Main.storyboard */; };
 		31E8190422D7289600D1D5B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31E8190322D7289600D1D5B6 /* Assets.xcassets */; };
 		31E8190722D7289600D1D5B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31E8190522D7289600D1D5B6 /* LaunchScreen.storyboard */; };
+		31E8191022D73A8200D1D5B6 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E8190F22D73A8200D1D5B6 /* VKSdkFramework.framework */; };
+		31E8191322D7413200D1D5B6 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8191222D7413200D1D5B6 /* AuthenticationService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		31E8190322D7289600D1D5B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31E8190622D7289600D1D5B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31E8190822D7289600D1D5B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31E8190F22D73A8200D1D5B6 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
+		31E8191222D7413200D1D5B6 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E8191022D73A8200D1D5B6 /* VKSdkFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +45,7 @@
 			children = (
 				31E818FB22D7289400D1D5B6 /* VKNews */,
 				31E818FA22D7289400D1D5B6 /* Products */,
+				31E8190E22D73A8200D1D5B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				31E818FC22D7289400D1D5B6 /* AppDelegate.swift */,
+				31E8191422D7430700D1D5B6 /* Services */,
 				31E818FE22D7289400D1D5B6 /* ViewController.swift */,
 				31E8190022D7289400D1D5B6 /* Main.storyboard */,
 				31E8190322D7289600D1D5B6 /* Assets.xcassets */,
@@ -62,6 +69,22 @@
 				31E8190822D7289600D1D5B6 /* Info.plist */,
 			);
 			path = VKNews;
+			sourceTree = "<group>";
+		};
+		31E8190E22D73A8200D1D5B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31E8190F22D73A8200D1D5B6 /* VKSdkFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		31E8191422D7430700D1D5B6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				31E8191222D7413200D1D5B6 /* AuthenticationService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +97,7 @@
 				31E818F522D7289400D1D5B6 /* Sources */,
 				31E818F622D7289400D1D5B6 /* Frameworks */,
 				31E818F722D7289400D1D5B6 /* Resources */,
+				31E8191122D73A9B00D1D5B6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -130,11 +154,33 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		31E8191122D73A9B00D1D5B6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/VKSdkFramework.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		31E818F522D7289400D1D5B6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E8191322D7413200D1D5B6 /* AuthenticationService.swift in Sources */,
 				31E818FF22D7289400D1D5B6 /* ViewController.swift in Sources */,
 				31E818FD22D7289400D1D5B6 /* AppDelegate.swift in Sources */,
 			);
@@ -284,6 +330,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7386LHKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VKNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +352,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R7386LHKG7;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VKNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
