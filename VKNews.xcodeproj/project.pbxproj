@@ -15,6 +15,8 @@
 		31E8191022D73A8200D1D5B6 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31E8190F22D73A8200D1D5B6 /* VKSdkFramework.framework */; };
 		31E8191322D7413200D1D5B6 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8191222D7413200D1D5B6 /* AuthenticationService.swift */; };
 		31E8191C22D76DB000D1D5B6 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8191B22D76DB000D1D5B6 /* NewsViewController.swift */; };
+		31E8191E22D775D900D1D5B6 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8191D22D775D900D1D5B6 /* NetworkService.swift */; };
+		31E8192022D7781400D1D5B6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E8191F22D7781400D1D5B6 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		31E8190F22D73A8200D1D5B6 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		31E8191222D7413200D1D5B6 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		31E8191B22D76DB000D1D5B6 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		31E8191D22D775D900D1D5B6 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		31E8191F22D7781400D1D5B6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				31E818FC22D7289400D1D5B6 /* AppDelegate.swift */,
-				31E8191B22D76DB000D1D5B6 /* NewsViewController.swift */,
 				31E8191422D7430700D1D5B6 /* Services */,
 				31E818FE22D7289400D1D5B6 /* ViewController.swift */,
+				31E8191B22D76DB000D1D5B6 /* NewsViewController.swift */,
 				31E8190022D7289400D1D5B6 /* Main.storyboard */,
 				31E8190322D7289600D1D5B6 /* Assets.xcassets */,
 				31E8190522D7289600D1D5B6 /* LaunchScreen.storyboard */,
@@ -86,6 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				31E8191222D7413200D1D5B6 /* AuthenticationService.swift */,
+				31E8191D22D775D900D1D5B6 /* NetworkService.swift */,
+				31E8191F22D7781400D1D5B6 /* API.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -183,9 +189,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E8191E22D775D900D1D5B6 /* NetworkService.swift in Sources */,
 				31E8191322D7413200D1D5B6 /* AuthenticationService.swift in Sources */,
 				31E818FF22D7289400D1D5B6 /* ViewController.swift in Sources */,
 				31E818FD22D7289400D1D5B6 /* AppDelegate.swift in Sources */,
+				31E8192022D7781400D1D5B6 /* API.swift in Sources */,
 				31E8191C22D76DB000D1D5B6 /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

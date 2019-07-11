@@ -14,7 +14,11 @@ final class AuthenticationService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     private let appId = "7052520"
     private let vkSdk: VKSdk
     
-    var delegate: AuthenticationServiceDelegate?
+    weak var delegate: AuthenticationServiceDelegate?
+    
+    var token: String? {
+        return VKSdk.accessToken()?.accessToken
+    }
     
     override init() {
         vkSdk = VKSdk.initialize(withAppId: appId)
@@ -26,16 +30,16 @@ final class AuthenticationService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
     func wakeUpSession() {
         let scope = ["offline"]
-        
-        VKSdk.wakeUpSession(scope) {
+        // Checking last session with capture list for deligate
+        VKSdk.wakeUpSession(scope) { [delegate]
             (state, error) in
             if state == VKAuthorizationState.authorized {
-                self.delegate?.authenticationServiceSignIn()
+                delegate?.authenticationServiceSignIn()
             } else if state == VKAuthorizationState.initialized {
                 VKSdk.authorize(scope)
             } else {
                 print("authentication problem \(state) error \(String(describing: error))")
-                self.delegate?.authenticationServiceDidSignInFail()
+                delegate?.authenticationServiceDidSignInFail()
             }
         }
     
@@ -68,7 +72,7 @@ final class AuthenticationService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
 }
 
     // MARK: SignIn protocol
-protocol AuthenticationServiceDelegate {
+protocol AuthenticationServiceDelegate: class {
     func authenticationServiceShouldShow(_ viewController: UIViewController)
     func authenticationServiceSignIn()
     func authenticationServiceDidSignInFail()
