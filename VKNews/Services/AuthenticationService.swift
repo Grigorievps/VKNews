@@ -14,6 +14,8 @@ final class AuthenticationService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     private let appId = "7052520"
     private let vkSdk: VKSdk
     
+    var delegate: AuthenticationServiceDelegate?
+    
     override init() {
         vkSdk = VKSdk.initialize(withAppId: appId)
         super.init()
@@ -22,23 +24,52 @@ final class AuthenticationService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         vkSdk.uiDelegate = self
     }
     
+    func wakeUpSession() {
+        let scope = ["offline"]
+        
+        VKSdk.wakeUpSession(scope) {
+            (state, error) in
+            if state == VKAuthorizationState.authorized {
+                self.delegate?.authenticationServiceSignIn()
+            } else if state == VKAuthorizationState.initialized {
+                VKSdk.authorize(scope)
+            } else {
+                print("authentication problem \(state) error \(String(describing: error))")
+                self.delegate?.authenticationServiceDidSignInFail()
+            }
+        }
+    
+    }
+    
     // MARK: VKSDKDelegate
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print(#function)
+        if result.token != nil {
+            delegate?.authenticationServiceSignIn()
+        }
     }
     
     func vkSdkUserAuthorizationFailed() {
         print(#function)
+        
     }
     
     // MARK: VKSDKUIDelegate
     
     func vkSdkShouldPresent(_ controller: UIViewController!) {
         print(#function)
+        delegate?.authenticationServiceShouldShow(controller)
     }
     
     func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
         print(#function)
     }
+}
+
+    // MARK: SignIn protocol
+protocol AuthenticationServiceDelegate {
+    func authenticationServiceShouldShow(_ viewController: UIViewController)
+    func authenticationServiceSignIn()
+    func authenticationServiceDidSignInFail()
 }

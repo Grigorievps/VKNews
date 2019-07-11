@@ -10,14 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private var authenticationService: AuthenticationService!
     @IBOutlet var authenticationButton: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        authenticationButton.layer.cornerRadius = 5
-//        authenticationButton.layer.masksToBounds = true
+        //authenticationService = AuthenticationService()
+        authenticationService = AppDelegate.shared().authenticationService
     }
 
-
+    @IBAction func signInTouch() {
+    authenticationService.wakeUpSession()
+    }
+    
+    
 }
 
 // MARK: - UIButton extension
