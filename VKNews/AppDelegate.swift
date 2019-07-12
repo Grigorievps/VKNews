@@ -40,7 +40,7 @@ extension AppDelegate: AuthenticationServiceDelegate {
     
     func authenticationServiceSignIn() {
         print(#function)
-        let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "News") as? NewsViewController
+        let newsVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "News") as? NewsFeedViewController
         let navigationVC = UINavigationController(rootViewController: newsVC!)
         window?.rootViewController = navigationVC
     }

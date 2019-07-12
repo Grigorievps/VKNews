@@ -52,20 +52,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--News View Controller-->
+        <!--News Feed View Controller-->
         <scene sceneID="E7h-dz-NgI">
             <objects>
-                <viewController storyboardIdentifier="News" id="AEJ-IE-PZQ" customClass="NewsViewController" customModule="VKNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="News" id="AEJ-IE-PZQ" customClass="NewsFeedViewController" customModule="VKNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pom-hC-G4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l4h-OW-36C">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="AEJ-IE-PZQ" id="Obe-ex-zhm"/>
+                                    <outlet property="delegate" destination="AEJ-IE-PZQ" id="yHv-u5-xCf"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="l4h-OW-36C" firstAttribute="top" secondItem="00A-iv-y5C" secondAttribute="top" id="DjI-AV-aR5"/>
+                            <constraint firstItem="00A-iv-y5C" firstAttribute="trailing" secondItem="l4h-OW-36C" secondAttribute="trailing" id="K6T-nM-rym"/>
+                            <constraint firstItem="00A-iv-y5C" firstAttribute="bottom" secondItem="l4h-OW-36C" secondAttribute="bottom" id="R8w-Sq-D4b"/>
+                            <constraint firstItem="l4h-OW-36C" firstAttribute="leading" secondItem="00A-iv-y5C" secondAttribute="leading" id="uwa-xM-5nc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="00A-iv-y5C"/>
                     </view>
+                    <connections>
+                        <outlet property="table" destination="l4h-OW-36C" id="How-gf-oI4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZG3-xs-u6r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1543" y="21"/>
+            <point key="canvasLocation" x="847" y="21"/>
         </scene>
     </scenes>
 </document>
