@@ -13,7 +13,15 @@ class NewsFeedCell: UITableViewCell {
     
     static let reusedId = "NewsFeedCell"
     
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var nameLable: UILabel!
+    @IBOutlet weak var dateLable: UILabel!
+    @IBOutlet weak var postLable: UILabel!
+    @IBOutlet weak var likesLable: UILabel!
+    @IBOutlet weak var commentsLable: UILabel!
+    @IBOutlet weak var sharesLable: UILabel!
+    @IBOutlet weak var viewsLable: UILabel!
     override func awakeFromNib() {
-       super.awakeFromNib()
+        super.awakeFromNib()
     }
 }
