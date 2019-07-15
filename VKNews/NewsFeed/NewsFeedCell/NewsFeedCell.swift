@@ -13,19 +13,31 @@ class NewsFeedCell: UITableViewCell {
     
     static let reusedId = "NewsFeedCell"
     
-    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var iconImageView: WebImageView!
     @IBOutlet weak var nameLable: UILabel!
     @IBOutlet weak var dateLable: UILabel!
     @IBOutlet weak var postLable: UILabel!
+    @IBOutlet weak var postImageView: WebImageView!
     @IBOutlet weak var likesLable: UILabel!
     @IBOutlet weak var commentsLable: UILabel!
     @IBOutlet weak var sharesLable: UILabel!
     @IBOutlet weak var viewsLable: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        iconImageView.layer.cornerRadius = iconImageView.frame.width / 2
+        iconImageView.clipsToBounds = true
+        
+        cardView.layer.cornerRadius = 10
+        cardView.clipsToBounds = true
+        backgroundColor = .clear
+        selectionStyle = .none
     }
     
     func set(viewModel: FeedCellViewModel) {
+        iconImageView.set(imageURL: viewModel.iconURLString)
         nameLable.text = viewModel.name
         dateLable.text = viewModel.date
         postLable.text = viewModel.text
@@ -33,6 +45,12 @@ class NewsFeedCell: UITableViewCell {
         commentsLable.text = viewModel.cooments
         sharesLable.text = viewModel.shares
         viewsLable.text = viewModel.views
+        if let photoAttachment = viewModel.photoAttachment {
+            postImageView.set(imageURL: photoAttachment.photoURLString)
+            postImageView.isHidden = false
+        } else {
+            postImageView.isHidden = true
+        }
     }
 }
 
@@ -45,4 +63,11 @@ protocol FeedCellViewModel {
     var shares: String? { get }
     var views: String? { get }
     var iconURLString: String { get }
+    var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+}
+
+protocol FeedCellPhotoAttachmentViewModel {
+    var photoURLString: String? { get }
+    var width: Int { get }
+    var height: Int { get }
 }
