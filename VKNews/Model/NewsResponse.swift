@@ -13,6 +13,8 @@ struct NewsResponseWrapped: Decodable {
 }
 struct NewsResponse: Decodable {
     var items: [NewsItem]
+    var profiles: [Profile]
+    var groups: [Group]
 }
 
 struct NewsItem: Decodable {
@@ -26,6 +28,30 @@ struct NewsItem: Decodable {
     let views: CountableItem?
 }
 
+struct Profile: Decodable, ProfileRepresentable {
+    let id: Int
+    let firstName: String
+    let lastName: String
+    let photo100: String
+    
+    var name: String { return firstName + " " + lastName}
+    var photo: String { return photo100 }
+}
+
+struct Group: Decodable, ProfileRepresentable {
+    let id: Int
+    let name: String
+    let photo100: String
+    
+    var photo: String { return photo100 }
+}
+
 struct CountableItem: Decodable {
     let count: Int
+}
+
+protocol ProfileRepresentable {
+    var id: Int { get }
+    var name: String { get }
+    var photo: String { get }
 }
