@@ -13,7 +13,11 @@ protocol NewsFeedPresentationLogic {
 }
 
 class NewsFeedPresenter: NewsFeedPresentationLogic {
+    
   weak var viewController: NewsFeedDisplayLogic?
+    
+    var cellLayoutcalculator: NewsFeedCellLayoutcalculatorProtocol = NewsFeedCellLayoutcalculator()
+    
     let dateFormatter: DateFormatter = {
         let dt = DateFormatter()
         dt.locale = Locale(identifier: "ru_RU")
@@ -41,7 +45,11 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         
         let date = Date(timeIntervalSince1970: feedItem.date)
         let dateTitle = dateFormatter.string(from: date)
-        return FeedViewModel.Cell.init(photoAttachment: photoAttachnent,
+        
+        let sizes = cellLayoutcalculator.sizes(postText: feedItem.text, photoAttachment: photoAttachnent)
+        
+        return FeedViewModel.Cell.init(sizes: sizes,
+                                       photoAttachment: photoAttachnent,
                                        name: profile.name,
                                        date: dateTitle,
                                        text: feedItem.text,

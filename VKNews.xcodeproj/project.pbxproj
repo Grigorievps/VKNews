@@ -17,6 +17,8 @@
 		3132940422D881CE0039DE38 /* NewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313293FD22D881CE0039DE38 /* NewsFeedInteractor.swift */; };
 		3132940922D8929F0039DE38 /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3132940822D8929F0039DE38 /* NewsFeedCell.swift */; };
 		3132940C22D8935D0039DE38 /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3132940B22D8935D0039DE38 /* NewsFeedCell.xib */; };
+		313C2EE722E057C000E8B598 /* String Extenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313C2EE622E057C000E8B598 /* String Extenssion.swift */; };
+		3191E75A22DD061D009E353E /* NewsFeedCellLayoutcalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3191E75922DD061D009E353E /* NewsFeedCellLayoutcalculator.swift */; };
 		31A9391122DC8E0300EE10CD /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A9391022DC8E0300EE10CD /* WebImageView.swift */; };
 		31E818FD22D7289400D1D5B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E818FC22D7289400D1D5B6 /* AppDelegate.swift */; };
 		31E818FF22D7289400D1D5B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E818FE22D7289400D1D5B6 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 		313293FD22D881CE0039DE38 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
 		3132940822D8929F0039DE38 /* NewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		3132940B22D8935D0039DE38 /* NewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
+		313C2EE622E057C000E8B598 /* String Extenssion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Extenssion.swift"; sourceTree = "<group>"; };
+		3191E75922DD061D009E353E /* NewsFeedCellLayoutcalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCellLayoutcalculator.swift; sourceTree = "<group>"; };
 		31A9391022DC8E0300EE10CD /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
 		31E818F922D7289400D1D5B6 /* VKNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31E818FC22D7289400D1D5B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				3132940822D8929F0039DE38 /* NewsFeedCell.swift */,
 				3132940B22D8935D0039DE38 /* NewsFeedCell.xib */,
+				3191E75922DD061D009E353E /* NewsFeedCellLayoutcalculator.swift */,
 			);
 			path = NewsFeedCell;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				31A9391022DC8E0300EE10CD /* WebImageView.swift */,
+				313C2EE622E057C000E8B598 /* String Extenssion.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 				3132940222D881CE0039DE38 /* NewsFeedModels.swift in Sources */,
 				3132940122D881CE0039DE38 /* NewsFeedRouter.swift in Sources */,
 				313293F622D8640D0039DE38 /* NetworkDataFetcher.swift in Sources */,
+				313C2EE722E057C000E8B598 /* String Extenssion.swift in Sources */,
 				313293F422D860DF0039DE38 /* NewsResponse.swift in Sources */,
 				31E8191E22D775D900D1D5B6 /* NetworkService.swift in Sources */,
 				3132940922D8929F0039DE38 /* NewsFeedCell.swift in Sources */,
@@ -282,6 +289,7 @@
 				31E818FF22D7289400D1D5B6 /* ViewController.swift in Sources */,
 				31E818FD22D7289400D1D5B6 /* AppDelegate.swift in Sources */,
 				31E8192022D7781400D1D5B6 /* API.swift in Sources */,
+				3191E75A22DD061D009E353E /* NewsFeedCellLayoutcalculator.swift in Sources */,
 				3132940322D881CE0039DE38 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

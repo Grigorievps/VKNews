@@ -23,6 +23,12 @@ class NewsFeedCell: UITableViewCell {
     @IBOutlet weak var commentsLable: UILabel!
     @IBOutlet weak var sharesLable: UILabel!
     @IBOutlet weak var viewsLable: UILabel!
+    @IBOutlet weak var bottomView: UIView!
+    
+    override func prepareForReuse() {
+        iconImageView.set(imageURL: nil)
+        postImageView.set(imageURL: nil)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,6 +51,11 @@ class NewsFeedCell: UITableViewCell {
         commentsLable.text = viewModel.cooments
         sharesLable.text = viewModel.shares
         viewsLable.text = viewModel.views
+        
+        postLable.frame = viewModel.sizes.postLableFrame
+        postImageView.frame = viewModel.sizes.attachmentFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
+        
         if let photoAttachment = viewModel.photoAttachment {
             postImageView.set(imageURL: photoAttachment.photoURLString)
             postImageView.isHidden = false
@@ -64,10 +75,18 @@ protocol FeedCellViewModel {
     var views: String? { get }
     var iconURLString: String { get }
     var photoAttachment: FeedCellPhotoAttachmentViewModel? { get }
+    var sizes: FeedCellSizes { get }
 }
 
 protocol FeedCellPhotoAttachmentViewModel {
     var photoURLString: String? { get }
     var width: Int { get }
     var height: Int { get }
+}
+
+protocol FeedCellSizes {
+    var postLableFrame: CGRect { get }
+    var attachmentFrame: CGRect { get }
+    var bottomViewFrame: CGRect { get }
+    var totalHeight: CGFloat { get }
 }
