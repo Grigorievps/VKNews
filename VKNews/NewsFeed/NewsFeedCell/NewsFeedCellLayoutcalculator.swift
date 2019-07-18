@@ -40,10 +40,11 @@ final class NewsFeedCellLayoutcalculator: NewsFeedCellLayoutcalculatorProtocol {
                                      size: CGSize.zero)
         if let attachment = photoAttachment {
             let ratio = CGFloat(attachment.height) / CGFloat(attachment.width)
-            attachmentFrame.size = CGSize(width: cardViewWidth, height: cardViewWidth * ratio)
+            attachmentFrame.origin = CGPoint(x: 8, y: postLableFrame.maxY)
+            attachmentFrame.size = CGSize(width: cardViewWidth - 16, height: (cardViewWidth - 16) * ratio)
         }
         
-        // MARK: Setting Attachment Frame
+        // MARK: Setting bottomView Frame
         
         let bottomViewTop = max(postLableFrame.maxY, attachmentFrame.maxY)
         let bottomViewFrame = CGRect(origin: CGPoint(x: 0, y: bottomViewTop),
