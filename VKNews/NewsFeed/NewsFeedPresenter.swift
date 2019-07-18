@@ -53,11 +53,22 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
                                        name: profile.name,
                                        date: dateTitle,
                                        text: feedItem.text,
-                                       likes: String(feedItem.likes?.count ?? 0),
-                                       cooments: String(feedItem.comments?.count ?? 0),
-                                       shares: String(feedItem.reposts?.count ?? 0),
-                                       views: String(feedItem.views?.count ?? 0),
+                                       likes: countFormatter(counter: feedItem.likes?.count),
+                                       cooments: countFormatter(counter: feedItem.comments?.count),
+                                       shares: countFormatter(counter: feedItem.reposts?.count),
+                                       views: countFormatter(counter: feedItem.views?.count),
                                        iconURLString: profile.photo)
+    }
+    
+    private func countFormatter(counter: Int?) -> String? {
+        guard let counter = counter, counter > 0 else { return nil }
+        var counterString = String(counter)
+        if counterString.count > 3, counterString.count <= 6 {
+            counterString = String(counterString.dropLast(3)) + "K"
+        } else if counterString.count > 6 {
+            counterString = String(counterString.dropLast(6) + "M")
+        }
+        return counterString
     }
     
     private func profile(for sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable {

@@ -19,7 +19,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
     
     private var feedViewModel = FeedViewModel.init(cells: [])
     @IBOutlet weak var table: UITableView!
-    
+    private var refreshController: UIRefreshControl = {
+        let refreshController = UIRefreshControl()
+        refreshController.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshController
+    }()
   
   // MARK: Setup
   
@@ -44,25 +48,36 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
   override func viewDidLoad() {
     super.viewDidLoad()
     setup()
-    table.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier: NewsFeedCell.reusedId)
-    
-    table.separatorStyle = .none
-    table.backgroundColor = .clear
+    setupTable()
     view.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
     
     interactor?.makeRequest(request: .getNewsFeed)
   }
     
-  
   func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
     switch viewModel {
     
     case .displayNewsFeed(let feedViewModel):
        self.feedViewModel = feedViewModel
         table.reloadData()
+        refreshController.endRefreshing()
     }
   }
-  
+    private func setupTable() {
+        let topInset: CGFloat = 8
+        table.contentInset.top = topInset
+        
+        table.register(UINib(nibName: "NewsFeedCell", bundle: nil), forCellReuseIdentifier: NewsFeedCell.reusedId)
+        
+        table.separatorStyle = .none
+        table.backgroundColor = .clear
+        
+        table.addSubview(refreshController)
+    }
+    
+    @objc private func refresh() {
+        interactor?.makeRequest(request: .getNewsFeed)
+    }
 }
 
 extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
